@@ -49,21 +49,6 @@ namespace FFXIV_ACT_ViewUnlocker
 		int maxZoomOffset = 0x11C;
 		int currentFovOffset = 0x120;
 		int farFovOffset = 0x128;
-		public void SetFov(float fov)
-		{
-			try
-			{
-				if (!WriteProcessMemory(process.Handle, IntPtr.Add(baseAddress, farFovOffset), BitConverter.GetBytes(fov), 4, IntPtr.Zero))
-					throw new Exception("WriteProcessMemory failed.");
-				if (!WriteProcessMemory(process.Handle, IntPtr.Add(baseAddress, currentFovOffset), BitConverter.GetBytes(fov), 4, IntPtr.Zero))
-					throw new Exception("WriteProcessMemory failed.");
-			}
-			catch (Exception e)
-			{
-				if (statusLabel != null)
-					statusLabel.Text = e.Message;
-			}
-		}
 
 		void SyncConfig(bool write = false)
         {
@@ -92,6 +77,22 @@ namespace FFXIV_ACT_ViewUnlocker
 					sw.WriteLine(zoom.Text);
 					sw.WriteLine(fov.Text);
 				}
+			}
+		}
+
+		public void SetFov(float fov)
+		{
+			try
+			{
+				if (!WriteProcessMemory(process.Handle, IntPtr.Add(baseAddress, farFovOffset), BitConverter.GetBytes(fov), 4, IntPtr.Zero))
+					throw new Exception("WriteProcessMemory failed.");
+				if (!WriteProcessMemory(process.Handle, IntPtr.Add(baseAddress, currentFovOffset), BitConverter.GetBytes(fov), 4, IntPtr.Zero))
+					throw new Exception("WriteProcessMemory failed.");
+			}
+			catch (Exception e)
+			{
+				if (statusLabel != null)
+					statusLabel.Text = e.Message;
 			}
 		}
 
@@ -175,9 +176,11 @@ namespace FFXIV_ACT_ViewUnlocker
 				}
 				catch
                 {
-					ActPluginData actPluginData = ActGlobals.oFormActMain.PluginGetSelfData(this);
-					actPluginData.cbEnabled.Checked = false;
-					actPluginData.cbEnabled.Checked = true;
+					SetZoom(float.Parse(zoom.Text));
+					SetFov(float.Parse(fov.Text));
+					//ActPluginData actPluginData = ActGlobals.oFormActMain.PluginGetSelfData(this);
+					//actPluginData.cbEnabled.Checked = false;
+					//actPluginData.cbEnabled.Checked = true;
 				}
 			}
 		}
@@ -221,5 +224,13 @@ namespace FFXIV_ACT_ViewUnlocker
                     e.Handled = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+			zoom.Text = "20";
+			fov.Text = "0.78";
+			SetZoom(float.Parse(zoom.Text));
+			SetFov(float.Parse(fov.Text));
+		}
     }
 }

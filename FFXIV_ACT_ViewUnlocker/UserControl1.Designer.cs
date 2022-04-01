@@ -32,6 +32,7 @@
             this.Zoom_Lable = new System.Windows.Forms.Label();
             this.FOV_Lable = new System.Windows.Forms.Label();
             this.fov = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // zoom
@@ -70,15 +71,26 @@
             this.fov.Text = "1.3";
             this.fov.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textKeyPress);
             // 
-            // ViewUnlocker 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 88);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "恢复默认";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ViewUnlocker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.fov);
             this.Controls.Add(this.FOV_Lable);
             this.Controls.Add(this.Zoom_Lable);
             this.Controls.Add(this.zoom);
-            this.Name = "ViewUnlocker ";
+            this.Name = "ViewUnlocker";
             this.Size = new System.Drawing.Size(800, 450);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -91,5 +103,6 @@
         private System.Windows.Forms.Label Zoom_Lable;
         private System.Windows.Forms.Label FOV_Lable;
         private System.Windows.Forms.TextBox fov;
+        private System.Windows.Forms.Button button1;
     }
 }
