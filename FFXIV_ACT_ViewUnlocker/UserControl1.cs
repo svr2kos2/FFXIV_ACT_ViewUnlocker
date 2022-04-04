@@ -62,7 +62,7 @@ namespace FFXIV_ACT_ViewUnlocker
 				{
 					string line;
 					if ((line = sr.ReadLine()) != null)
-						viewPointerOffset = int.Parse(line);
+						viewPointerOffset = int.Parse(line, System.Globalization.NumberStyles.HexNumber);
 					if ((line = sr.ReadLine()) != null)
 						zoom.Text = line;
 					if ((line = sr.ReadLine()) != null)
@@ -73,7 +73,7 @@ namespace FFXIV_ACT_ViewUnlocker
 			{
 				using (StreamWriter sw = new StreamWriter(filePath))
 				{
-					sw.WriteLine(0x1E74290);
+					sw.WriteLine(0x1E74290.ToString("X"));
 					sw.WriteLine(zoom.Text);
 					sw.WriteLine(fov.Text);
 				}
