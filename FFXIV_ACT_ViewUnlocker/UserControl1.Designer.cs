@@ -32,7 +32,13 @@
             this.Zoom_Lable = new System.Windows.Forms.Label();
             this.FOV_Lable = new System.Windows.Forms.Label();
             this.fov = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SetToDefault = new System.Windows.Forms.Button();
+            this.offset = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.PullOffsetFromeNetwork = new System.Windows.Forms.Button();
+            this.ScanOffsetLocally = new System.Windows.Forms.Button();
+            this.RequestInfo = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // zoom
@@ -42,6 +48,7 @@
             this.zoom.Size = new System.Drawing.Size(100, 21);
             this.zoom.TabIndex = 0;
             this.zoom.Text = "100";
+            this.zoom.TextChanged += new System.EventHandler(this.zoom_TextChanged);
             this.zoom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textKeyPress);
             // 
             // Zoom_Lable
@@ -69,23 +76,85 @@
             this.fov.Size = new System.Drawing.Size(100, 21);
             this.fov.TabIndex = 3;
             this.fov.Text = "1.3";
+            this.fov.TextChanged += new System.EventHandler(this.fov_TextChanged);
             this.fov.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textKeyPress);
             // 
-            // button1
+            // SetToDefault
             // 
-            this.button1.Location = new System.Drawing.Point(25, 88);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "恢复默认";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SetToDefault.Location = new System.Drawing.Point(25, 88);
+            this.SetToDefault.Name = "SetToDefault";
+            this.SetToDefault.Size = new System.Drawing.Size(75, 23);
+            this.SetToDefault.TabIndex = 4;
+            this.SetToDefault.Text = "恢复默认";
+            this.SetToDefault.UseVisualStyleBackColor = true;
+            this.SetToDefault.Click += new System.EventHandler(this.button_SetToDefault_Click);
+            // 
+            // offset
+            // 
+            this.offset.Location = new System.Drawing.Point(74, 167);
+            this.offset.Name = "offset";
+            this.offset.Size = new System.Drawing.Size(100, 21);
+            this.offset.TabIndex = 5;
+            this.offset.Text = "0";
+            this.offset.TextChanged += new System.EventHandler(this.offset_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Offset";
+            // 
+            // PullOffsetFromeNetwork
+            // 
+            this.PullOffsetFromeNetwork.Location = new System.Drawing.Point(18, 207);
+            this.PullOffsetFromeNetwork.Name = "PullOffsetFromeNetwork";
+            this.PullOffsetFromeNetwork.Size = new System.Drawing.Size(75, 23);
+            this.PullOffsetFromeNetwork.TabIndex = 7;
+            this.PullOffsetFromeNetwork.Text = "从网络获取";
+            this.PullOffsetFromeNetwork.UseVisualStyleBackColor = true;
+            this.PullOffsetFromeNetwork.Click += new System.EventHandler(this.PullOffsetFromeNetwork_Click);
+            // 
+            // ScanOffsetLocally
+            // 
+            this.ScanOffsetLocally.Location = new System.Drawing.Point(99, 207);
+            this.ScanOffsetLocally.Name = "ScanOffsetLocally";
+            this.ScanOffsetLocally.Size = new System.Drawing.Size(75, 23);
+            this.ScanOffsetLocally.TabIndex = 8;
+            this.ScanOffsetLocally.Text = "内存搜索";
+            this.ScanOffsetLocally.UseVisualStyleBackColor = true;
+            this.ScanOffsetLocally.Click += new System.EventHandler(this.ScanOffsetLocally_Click);
+            // 
+            // RequestInfo
+            // 
+            this.RequestInfo.AutoSize = true;
+            this.RequestInfo.Location = new System.Drawing.Point(23, 253);
+            this.RequestInfo.Name = "RequestInfo";
+            this.RequestInfo.Size = new System.Drawing.Size(0, 12);
+            this.RequestInfo.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(196, 167);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(185, 24);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "使用内存搜索前请将视角拉到最远\r\n内存搜索会耗费一定时间";
             // 
             // ViewUnlocker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.RequestInfo);
+            this.Controls.Add(this.ScanOffsetLocally);
+            this.Controls.Add(this.PullOffsetFromeNetwork);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.offset);
+            this.Controls.Add(this.SetToDefault);
             this.Controls.Add(this.fov);
             this.Controls.Add(this.FOV_Lable);
             this.Controls.Add(this.Zoom_Lable);
@@ -103,6 +172,12 @@
         private System.Windows.Forms.Label Zoom_Lable;
         private System.Windows.Forms.Label FOV_Lable;
         private System.Windows.Forms.TextBox fov;
-        private System.Windows.Forms.Button button1;
-    }
+        private System.Windows.Forms.Button SetToDefault;
+		private System.Windows.Forms.TextBox offset;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button PullOffsetFromeNetwork;
+		private System.Windows.Forms.Button ScanOffsetLocally;
+		private System.Windows.Forms.Label RequestInfo;
+		private System.Windows.Forms.Label label2;
+	}
 }
