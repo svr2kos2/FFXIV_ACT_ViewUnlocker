@@ -34,6 +34,7 @@
             this.FovInputfield = new System.Windows.Forms.TextBox();
             this.SetToDefault = new System.Windows.Forms.Button();
             this.StatusLable = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ZoomInputField
@@ -92,10 +93,21 @@
             this.StatusLable.TabIndex = 11;
             this.StatusLable.Text = "等待游戏启动";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Control;
+            this.label1.Location = new System.Drawing.Point(92, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "可以导入到ACT哦";
+            // 
             // MainPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.StatusLable);
             this.Controls.Add(this.SetToDefault);
             this.Controls.Add(this.FovInputfield);
@@ -103,7 +115,7 @@
             this.Controls.Add(this.Zoom_Lable);
             this.Controls.Add(this.ZoomInputField);
             this.Name = "MainPage";
-            this.Size = new System.Drawing.Size(264, 55);
+            this.Size = new System.Drawing.Size(261, 49);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +129,6 @@
         private System.Windows.Forms.TextBox FovInputfield;
         private System.Windows.Forms.Button SetToDefault;
 		private System.Windows.Forms.Label StatusLable;
+		private System.Windows.Forms.Label label1;
 	}
 }

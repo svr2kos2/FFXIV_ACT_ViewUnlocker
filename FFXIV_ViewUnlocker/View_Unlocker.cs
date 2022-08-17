@@ -132,6 +132,8 @@ namespace FFXIV_ACT_ViewUnlocker {
 			form.Size = mainpage.Size + new Size(20, 40);
 			form.FormBorderStyle = FormBorderStyle.FixedSingle ;
 			form.MaximizeBox = false;
+			form.ShowIcon = false;
+			form.Text = "FFXIV_ViewUnlocker";
 			currentPath = Environment.CurrentDirectory;
 			Init();
 			Application.Run(form);

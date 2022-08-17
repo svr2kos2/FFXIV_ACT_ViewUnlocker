@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{38B4CD61-F04D-4F5A-944B-CEA6CB6CC2BC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>FFXIV_ACT_ViewUnlocker</RootNamespace>
-    <AssemblyName>FFXIV_ACT_ViewUnlocker</AssemblyName>
+    <RootNamespace>FFXIV_ViewUnlocker</RootNamespace>
+    <AssemblyName>FFXIV_ViewUnlocker</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -65,6 +65,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
@@ -111,6 +114,9 @@
     <EmbeddedResource Include="MainPage.resx">
       <DependentUpon>MainPage.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
