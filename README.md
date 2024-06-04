@@ -1,5 +1,5 @@
 # FFXIV_ACT_ViewUnlocker
-Unlock fov and zoom range for FF14
+Unlock fov and zoom range for FF14  
 FF14的视角解锁插件
 在 [Release](https://github.com/svr2kos2/FFXIV_ACT_ViewUnlocker/releases) 里下载FFXIV_ACT_ViewUnlocker.dll后,在ACT里导入即可  
 
