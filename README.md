@@ -1,9 +1,9 @@
 # FFXIV_ACT_ViewUnlocker
-This plugin can only use in CN server  
-FF14的ACT视角解锁插件
+Unlock fov and zoom range for FF14
+FF14的视角解锁插件
 在 [Release](https://github.com/svr2kos2/FFXIV_ACT_ViewUnlocker/releases) 里下载FFXIV_ACT_ViewUnlocker.dll后,在ACT里导入即可  
 
-# 如何寻找Offset
+# 如果你想自己寻找Offset
 首先需要知道的是我们要寻找并修改的缩放距离和fov的默认值和他们在内存中的结构  
 |当前缩放|最小缩放距离|最大缩放距离|当前fov|视角拉近时fov|视角拉远时fov|  
 |--|--|--|--|--|--|
@@ -15,5 +15,3 @@ FF14的ACT视角解锁插件
 把得到的地址减去0x114既是这个数据结构的地址  
 我们再在静态区搜索这个地址即可获得指向这个结构的指针地址  
 该指针的地址既是我们要找的offset  
-  
-在dll同目录下的view_unlocker.cfg文件里修改第一行即可  
