@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
-//using Advanced_Combat_Tracker;
+using Advanced_Combat_Tracker;
 using System.Threading;
 
 namespace FFXIV_ACT_ViewUnlocker {
@@ -31,19 +31,19 @@ namespace FFXIV_ACT_ViewUnlocker {
             public static IntPtr viewStructureAddr = IntPtr.Zero;
 
             public static IntPtr currentZoom {
-                get { return IntPtr.Add(viewStructureAddr, 0X114); }
+                get { return IntPtr.Add(viewStructureAddr, 0X124); }
             }
 
             public static IntPtr maxZoom {
-                get { return IntPtr.Add(viewStructureAddr, 0x11C); }
+                get { return IntPtr.Add(viewStructureAddr, 0x12C); }
             }
 
             public static IntPtr currentFov {
-                get { return IntPtr.Add(viewStructureAddr, 0x120); }
+                get { return IntPtr.Add(viewStructureAddr, 0x130); }
             }
 
             public static IntPtr maxFov {
-                get { return IntPtr.Add(viewStructureAddr, 0x128); }
+                get { return IntPtr.Add(viewStructureAddr, 0x138); }
             }
         }
 
@@ -104,6 +104,7 @@ namespace FFXIV_ACT_ViewUnlocker {
                             mainpage.SetStatus("等待游戏启动");
                             ffxivProcess = Process.GetProcessesByName("ffxiv_dx11").FirstOrDefault();
                             if (ffxivProcess == null) continue;
+                            mainpage.SetStatus("正在搜索地址");
                             ViewAddr.viewStructureAddr = GetViewStructureAddress(ffxivProcess);
                             break;
                         }
@@ -155,20 +156,23 @@ namespace FFXIV_ACT_ViewUnlocker {
             Application.Run(form);
             Deinit();
         }
-        // internal class ACT_View_Unlocker : IActPluginV1 {
-        //     public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText) {
-        //         pluginScreenSpace.Text = "视角解锁";
-        //         mainpage = new MainPage();
-        //         pluginScreenSpace.Controls.Add(View_Unlocker.mainpage);
-        //         pluginStatusText.Text = "Started";
-        //         ActPluginData actPluginData = ActGlobals.oFormActMain.PluginGetSelfData(this);
-        //         currentPath = actPluginData.pluginFile.DirectoryName;
-        //         Init();
-        //     }
-        //     public void DeInitPlugin() {
-        //         ActGlobals.oFormActMain.PluginGetSelfData(this).lblPluginStatus.Text = "Stoped";
-        //         Deinit();
-        //     }
-        // }
+        internal class ACT_View_Unlocker : IActPluginV1
+        {
+            public void InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
+            {
+                pluginScreenSpace.Text = "视角解锁";
+                mainpage = new MainPage();
+                pluginScreenSpace.Controls.Add(View_Unlocker.mainpage);
+                pluginStatusText.Text = "Started";
+                ActPluginData actPluginData = ActGlobals.oFormActMain.PluginGetSelfData(this);
+                currentPath = actPluginData.pluginFile.DirectoryName;
+                Init();
+            }
+            public void DeInitPlugin()
+            {
+                ActGlobals.oFormActMain.PluginGetSelfData(this).lblPluginStatus.Text = "Stoped";
+                Deinit();
+            }
+        }
     }
 }
